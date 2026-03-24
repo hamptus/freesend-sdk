@@ -5,7 +5,7 @@ Settings::
 
     EMAIL_BACKEND = "freesend.django.FreesendEmailBackend"
     FREESEND_API_KEY = "sk_live_..."
-    FREESEND_API_URL = "https://freesend.fly.dev"  # optional
+    FREESEND_API_URL = "https://freesend.keybee.app"  # optional
     DEFAULT_FROM_EMAIL = "you@yourdomain.com"
 
 Then use Django's standard email API unchanged::
@@ -27,7 +27,7 @@ class FreesendEmailBackend(BaseEmailBackend):
         api_key = getattr(settings, "FREESEND_API_KEY", None)
         if not api_key:
             raise ValueError("FREESEND_API_KEY is not set in Django settings.")
-        base_url = getattr(settings, "FREESEND_API_URL", "https://freesend.fly.dev")
+        base_url = getattr(settings, "FREESEND_API_URL", "https://freesend.keybee.app")
         self._freesend = Freesend(api_key=api_key, base_url=base_url)
 
     def send_messages(self, email_messages):
